@@ -20,11 +20,10 @@ public class User {
     private String email;
     @Column
     private Role role;
-    @OneToMany
+    @OneToMany (mappedBy = "user")
     private List<Message> messages;
 
-    @ManyToMany
-
+    @ManyToMany (mappedBy = "users")
     private List<Chatroom> chatrooms;
 
     public User(String userName, String email, Role role, List<Message> messages) {

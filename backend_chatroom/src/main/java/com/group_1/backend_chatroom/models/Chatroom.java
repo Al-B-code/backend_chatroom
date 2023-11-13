@@ -4,7 +4,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-@Table(name = "chatroom")
+@Table(name = "chatrooms")
 @Entity
 public class Chatroom {
 
@@ -15,7 +15,7 @@ public class Chatroom {
     @Column
     private String name;
 
-    @OneToMany //Message needs to be created
+    @OneToMany (mappedBy = "chatroom")
     private List<Message> messages;
 
     @ManyToMany //User needs to be created
