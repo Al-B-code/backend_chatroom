@@ -1,5 +1,5 @@
 package com.group_1.backend_chatroom.models;
-
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -14,18 +14,14 @@ public class Chatroom {
     @Column
     private String name;
 
-
-    @Column
     @OneToMany //Message needs to be created
     private List<Message> messages;
 
-    @Column
     @ManyToMany //User needs to be created
     private List<User> users;
 
 
     public Chatroom(String name, List<Message> messages, List<User> users) {
-        this.id = id;
         this.name = name;
         this.messages = messages;
         this.users = users;
