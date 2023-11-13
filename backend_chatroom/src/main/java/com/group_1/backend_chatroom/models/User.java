@@ -5,7 +5,7 @@ import jdk.jfr.Name;
 
 import java.util.List;
 
-@Table
+@Table(name = "users")
 @Entity
 public class User {
 

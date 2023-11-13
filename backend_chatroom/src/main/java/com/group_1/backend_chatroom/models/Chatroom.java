@@ -3,7 +3,7 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
-@Table
+@Table(name = "chatroom")
 @Entity
 public class Chatroom {
 
