@@ -1,4 +1,5 @@
 package com.group_1.backend_chatroom.models;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -29,10 +30,10 @@ public class Chatroom {
     private List<User> users;
 
 
-    public Chatroom(String name, List<Message> messages, List<User> users) {
+    public Chatroom(String name) {
         this.name = name;
-        this.messages = messages;
-        this.users = users;
+        this.messages = new ArrayList<>();
+        this.users = new ArrayList<>();
     }
 
     public Chatroom() {

@@ -3,6 +3,7 @@ package com.group_1.backend_chatroom.models;
 import jakarta.persistence.*;
 import jdk.jfr.Name;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "users")
@@ -26,11 +27,11 @@ public class User {
     @ManyToMany (mappedBy = "users")
     private List<Chatroom> chatrooms;
 
-    public User(String userName, String email, Role role, List<Message> messages) {
+    public User(String userName, String email, Role role) {
         this.userName = userName;
         this.email = email;
         this.role = role;
-        this.messages = messages;
+        this.messages = new ArrayList<>();
     }
 
     public User() {

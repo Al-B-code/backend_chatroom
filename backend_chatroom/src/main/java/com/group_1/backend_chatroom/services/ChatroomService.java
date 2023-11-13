@@ -26,5 +26,9 @@ public class ChatroomService {
         return chatroomRepository.getReferenceById(chatroomDTO.getId());
     }
 
+    public void addChatroom(Chatroom chatroom){
+        chatroomRepository.save(chatroom);
+    }
+
 
 }
