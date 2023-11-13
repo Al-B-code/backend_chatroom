@@ -1,6 +1,7 @@
 package com.group_1.backend_chatroom.models;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Table(name = "chatroom")
@@ -18,6 +19,13 @@ public class Chatroom {
     private List<Message> messages;
 
     @ManyToMany //User needs to be created
+    @JoinTable(
+            name = "chatroom_users",
+            joinColumns = @JoinColumn(name = "chatroom_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+
+    @JsonIgnoreProperties({"users"})
     private List<User> users;
 
 

@@ -23,6 +23,7 @@ public class User {
     @OneToMany
     private List<Message> messages;
 
+    @ManyToMany
 
     private List<Chatroom> chatrooms;
 
