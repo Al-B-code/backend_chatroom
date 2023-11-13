@@ -23,6 +23,9 @@ public class User {
     @OneToMany
     private List<Message> messages;
 
+
+    private List<Chatroom> chatrooms;
+
     public User(String userName, String email, Role role, List<Message> messages) {
         this.userName = userName;
         this.email = email;

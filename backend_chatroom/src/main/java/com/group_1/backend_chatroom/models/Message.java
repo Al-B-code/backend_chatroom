@@ -3,15 +3,13 @@ package com.group_1.backend_chatroom.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "messages")
-public class Messages {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,14 +27,14 @@ public class Messages {
     @JoinColumn(name = "chatroom_id")
     private Chatroom chatroom;
 
-    public Messages(String content){
+    public Message(String content){
         this.content = content;
         LocalDateTime localDateTime = LocalDateTime.now();
         ZonedDateTime currentTime = localDateTime.atZone(ZoneId.of("UTC"));
         this.timeCreated = currentTime;
     }
 
-    public Messages(){
+    public Message(){
     }
 
     public Long getId() {
