@@ -25,7 +25,7 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 ## 4. Chatroom Functionality
 
 ## 5. MVP 🫡
-- [ ] Allow for the creation of a new user
+- [X] Allow for the creation of a new user
 - [ ] Allow you to update the information of a user
 - [ ] Delete a user
 - [X] Allow a user to post a message in a chatroom
