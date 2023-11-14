@@ -1,12 +1,10 @@
 package com.group_1.backend_chatroom.components;
 
 
-import com.group_1.backend_chatroom.models.Chatroom;
-import com.group_1.backend_chatroom.models.Message;
-import com.group_1.backend_chatroom.models.Role;
-import com.group_1.backend_chatroom.models.User;
+import com.group_1.backend_chatroom.models.*;
 import com.group_1.backend_chatroom.repositories.ChatroomRepository;
 import com.group_1.backend_chatroom.repositories.MessageRepository;
+import com.group_1.backend_chatroom.repositories.UserChatroomAssociationRepository;
 import com.group_1.backend_chatroom.services.ChatroomService;
 import com.group_1.backend_chatroom.services.MessageService;
 import com.group_1.backend_chatroom.services.UserService;
@@ -28,6 +26,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     MessageService messageService;
 
+    @Autowired
+    UserChatroomAssociationRepository userChatroomAssociationRepository;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -46,8 +47,12 @@ public class DataLoader implements ApplicationRunner {
         Chatroom chatroom2= new Chatroom("BNTA Trainer Chatroom");
         chatroomService.addChatroom(chatroom2);
 
-//        Message message = new Message("Hello world!", chatroom, ryan);
-//        messageService.addMessage(message);
+        Message message = new Message("Hello world!", chatroom, ryan);
+        messageService.addMessage(message);
+        chatroom.addMessage(message);
+
+        UserChatroomAssociation userChatroomAssociation = new UserChatroomAssociation(ryan, chatroom);
+        userChatroomAssociationRepository.save(userChatroomAssociation);
 
     }
 
