@@ -1,5 +1,6 @@
 package com.group_1.backend_chatroom.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,10 +17,12 @@ public class UserChatroomAssociation {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"userChatroomAssociations"})
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "chatroom_id")
+    @JsonIgnoreProperties({"userChatroomAssociations"})
     private Chatroom chatroom;
 
 

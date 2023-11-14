@@ -53,6 +53,11 @@ public class UserService {
         Chatroom chatroom = chatroomRepository.getReferenceById(chatroomId);
         Message message = new Message(messageContentDTO.getContent(), chatroom, user);
         chatroom.addMessage(message);
+
+        messageRepository.save(message);
+        userRepository.save(user);
+        chatroomRepository.save(chatroom);
+
         // add to the userchatroomassociation table
         UserChatroomAssociation userChatroomAssociation = new UserChatroomAssociation(user, chatroom);
 
@@ -62,9 +67,6 @@ public class UserService {
         if (chatroomAssociations.isEmpty()){
             userChatroomAssociationRepository.save(userChatroomAssociation);
         }
-        messageRepository.save(message);
-        userRepository.save(user);
-        chatroomRepository.save(chatroom);
 
         return message;
 
