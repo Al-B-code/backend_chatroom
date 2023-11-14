@@ -39,6 +39,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public Long deleteUser(Long id){
+        userRepository.deleteById(id);
+        return id;
+    }
 
     @Transactional
     public Message userSendMessage( Long chatroomId, MessageContentDTO messageContentDTO){
