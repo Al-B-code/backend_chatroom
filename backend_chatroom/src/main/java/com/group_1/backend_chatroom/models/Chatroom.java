@@ -19,22 +19,26 @@ public class Chatroom {
     @OneToMany (mappedBy = "chatroom")
     private List<Message> messages;
 
-    @ManyToMany //User needs to be created
-    @JoinTable(
-            name = "chatroom_users",
-            joinColumns = @JoinColumn(name = "chatroom_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"chatroom_id", "user_id"})
-    )
+//    @ManyToMany //User needs to be created
+//    @JoinTable(
+//            name = "chatroom_users",
+//            joinColumns = @JoinColumn(name = "chatroom_id"),
+//            inverseJoinColumns = @JoinColumn(name = "user_id"),
+//            uniqueConstraints = @UniqueConstraint(columnNames = {"chatroom_id", "user_id"})
+//    )
+//
+//    @JsonIgnoreProperties({"users"})
+//    @Column
+//    private List<User> users;
 
-    @JsonIgnoreProperties({"users"})
-    private List<User> users;
+    @OneToMany(mappedBy = "chatroom")
+    private List<UserChatroomAssociation> userChatroomAssociations;
 
 
     public Chatroom(String name) {
         this.name = name;
         this.messages = new ArrayList<>();
-        this.users = new ArrayList<>();
+//        this.users = new ArrayList<>();
     }
 
     public Chatroom() {
@@ -64,13 +68,13 @@ public class Chatroom {
         this.messages = messages;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
     public void addMessage(Message message){
         this.messages.add(message);
@@ -80,14 +84,30 @@ public class Chatroom {
         this.messages.remove(message);
     }
 
-    public void addUser(User user){
-        this.users.add(user);
+//    public void addUser(User user){
+//        this.users.add(user);
+//    }
+//
+//    public void removeUser(User user){
+//        this.users.remove(user);
+//    }
+
+
+    public void addUserChatroomAssociation(UserChatroomAssociation userChatroomAssociation){
+        this.userChatroomAssociations.add(userChatroomAssociation);
     }
 
-    public void removeUser(User user){
-        this.users.remove(user);
+    public void removeUserChatroomAssociation(UserChatroomAssociation userChatroomAssociation){
+        this.userChatroomAssociations.remove(userChatroomAssociation);
     }
 
+    public List<UserChatroomAssociation> getUserChatroomAssociations() {
+        return userChatroomAssociations;
+    }
+
+    public void setUserChatroomAssociations(List<UserChatroomAssociation> userChatroomAssociations) {
+        this.userChatroomAssociations = userChatroomAssociations;
+    }
 }
 
 

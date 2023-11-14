@@ -24,8 +24,11 @@ public class User {
     @OneToMany (mappedBy = "user")
     private List<Message> messages;
 
-    @ManyToMany (mappedBy = "users")
-    private List<Chatroom> chatrooms;
+//    @ManyToMany (mappedBy = "users")
+//    private List<Chatroom> chatrooms;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserChatroomAssociation> userChatroomAssociations;
 
     public User(String userName, String email, Role role) {
         this.userName = userName;
@@ -86,4 +89,20 @@ public class User {
         this.messages.remove(message);
     }
 
+
+    public List<UserChatroomAssociation> getUserChatroomAssociations() {
+        return userChatroomAssociations;
+    }
+
+    public void setUserChatroomAssociations(List<UserChatroomAssociation> userChatroomAssociations) {
+        this.userChatroomAssociations = userChatroomAssociations;
+    }
+
+    public void addUserChatroomAssociation(UserChatroomAssociation userChatroomAssociation){
+        this.userChatroomAssociations.add(userChatroomAssociation);
+    }
+
+    public void removeUserChatroomAssociation(UserChatroomAssociation userChatroomAssociation){
+        this.userChatroomAssociations.remove(userChatroomAssociation);
+    }
 }
