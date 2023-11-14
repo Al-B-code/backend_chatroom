@@ -35,6 +35,7 @@ public class User {
         this.email = email;
         this.role = role;
         this.messages = new ArrayList<>();
+        this.userChatroomAssociations = new ArrayList<>();
     }
 
     public User() {

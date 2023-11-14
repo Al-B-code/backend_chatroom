@@ -1,5 +1,6 @@
 package com.group_1.backend_chatroom.controllers;
 
+import com.group_1.backend_chatroom.dtos.UserDTO;
 import com.group_1.backend_chatroom.models.User;
 import com.group_1.backend_chatroom.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         User user = userService.getUser(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody UserDTO userDTO){
+        User user = userService.createNewUser(userDTO);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/{id}")

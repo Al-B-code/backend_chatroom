@@ -46,8 +46,9 @@ public class DataLoader implements ApplicationRunner {
         Chatroom chatroom2= new Chatroom("BNTA Trainer Chatroom");
         chatroomService.addChatroom(chatroom2);
 
-//        Message message = new Message("Hello world!", chatroom, ryan);
-//        messageService.addMessage(message);
+        Message message = new Message("Hello world!", chatroom, ryan);
+        messageService.addMessage(message);
+        chatroom.addMessage(message);
 
     }
 

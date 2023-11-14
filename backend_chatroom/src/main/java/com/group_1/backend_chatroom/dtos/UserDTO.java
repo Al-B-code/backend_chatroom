@@ -1,18 +1,37 @@
 package com.group_1.backend_chatroom.dtos;
 
+import com.group_1.backend_chatroom.models.Role;
+
 public class UserDTO {
 
-
-    private Long id;
+    private String userName;
+    private String email;
+    private int role;
 
     public UserDTO() {
     }
 
-    public Long getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 }

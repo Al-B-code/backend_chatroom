@@ -3,10 +3,7 @@ package com.group_1.backend_chatroom.services;
 import com.group_1.backend_chatroom.dtos.ChatroomDTO;
 import com.group_1.backend_chatroom.dtos.MessageContentDTO;
 import com.group_1.backend_chatroom.dtos.UserDTO;
-import com.group_1.backend_chatroom.models.Chatroom;
-import com.group_1.backend_chatroom.models.Message;
-import com.group_1.backend_chatroom.models.User;
-import com.group_1.backend_chatroom.models.UserChatroomAssociation;
+import com.group_1.backend_chatroom.models.*;
 import com.group_1.backend_chatroom.repositories.ChatroomRepository;
 import com.group_1.backend_chatroom.repositories.MessageRepository;
 import com.group_1.backend_chatroom.repositories.UserChatroomAssociationRepository;
@@ -72,6 +69,19 @@ public class UserService {
         return message;
 
 
+    }
+
+    public User createNewUser(UserDTO userDTO){
+
+        User user = new User(
+                userDTO.getUserName(),
+                userDTO.getEmail(),
+                Role.fromInteger(userDTO.getRole())
+        );
+        System.out.println(userDTO.getRole());
+        userRepository.save(user);
+
+        return user;
     }
 
 }

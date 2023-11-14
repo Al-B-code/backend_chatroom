@@ -31,8 +31,8 @@ public class ChatroomService {
         chatroomRepository.save(chatroom);
     }
 
-    public List<Message> getChatroomMessages(Long id){
-        return chatroomRepository.findAllMessagesById(id);
+    public Chatroom getChatroomMessages(Long id){
+        return chatroomRepository.findById(id).get();
     }
 
 

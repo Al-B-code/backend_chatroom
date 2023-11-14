@@ -36,7 +36,7 @@ public class ChatroomController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<List<Message>> getAllMessagesInChatroom(@PathVariable Long id){
+    public ResponseEntity<Chatroom> getAllMessagesInChatroom(@PathVariable Long id){
         return new ResponseEntity<>(chatroomService.getChatroomMessages(id), HttpStatus.OK);
     }
 
