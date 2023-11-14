@@ -46,6 +46,8 @@ public class UserService {
         User user = userRepository.getReferenceById(messageContentDTO.getUserId());
         Chatroom chatroom = chatroomRepository.getReferenceById(chatroomId);
         Message message = new Message(messageContentDTO.getContent(), chatroom, user);
+        chatroom.addMessage(message);
+        chatroom.addUser(user);
         messageRepository.save(message);
         userRepository.save(user);
         chatroomRepository.save(chatroom);

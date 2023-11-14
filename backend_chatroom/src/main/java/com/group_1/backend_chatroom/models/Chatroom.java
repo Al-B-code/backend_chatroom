@@ -70,6 +70,23 @@ public class Chatroom {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+    public void addMessage(Message message){
+        this.messages.add(message);
+    }
+
+    public void removeMessage(Message message){
+        this.messages.remove(message);
+    }
+
+    public void addUser(User user){
+        this.users.add(user);
+    }
+
+    public void removeUser(User user){
+        this.users.remove(user);
+    }
+
 }
 
 
