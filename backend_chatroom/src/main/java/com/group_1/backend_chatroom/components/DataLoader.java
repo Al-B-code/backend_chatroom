@@ -2,10 +2,13 @@ package com.group_1.backend_chatroom.components;
 
 
 import com.group_1.backend_chatroom.models.Chatroom;
+import com.group_1.backend_chatroom.models.Message;
 import com.group_1.backend_chatroom.models.Role;
 import com.group_1.backend_chatroom.models.User;
 import com.group_1.backend_chatroom.repositories.ChatroomRepository;
+import com.group_1.backend_chatroom.repositories.MessageRepository;
 import com.group_1.backend_chatroom.services.ChatroomService;
+import com.group_1.backend_chatroom.services.MessageService;
 import com.group_1.backend_chatroom.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -23,7 +26,7 @@ public class DataLoader implements ApplicationRunner {
     ChatroomService chatroomService;
 
     @Autowired
-    ChatroomRepository chatroomRepository;
+    MessageService messageService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -39,6 +42,8 @@ public class DataLoader implements ApplicationRunner {
         Chatroom chatroom = new Chatroom("BNTA Chatroom");
         chatroomService.addChatroom(chatroom);
 
+        Message message = new Message("Hello world!", chatroom, ryan);
+        messageService.addMessage(message);
 
     }
 

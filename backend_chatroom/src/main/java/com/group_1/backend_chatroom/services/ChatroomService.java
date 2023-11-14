@@ -22,7 +22,7 @@ public class ChatroomService {
         return chatroomRepository.findAll();
     }
 
-    public Chatroom getChatroomById(ChatroomDTO chatroomDTO){
+    public Chatroom getChatroom(ChatroomDTO chatroomDTO){
         return chatroomRepository.getReferenceById(chatroomDTO.getId());
     }
 

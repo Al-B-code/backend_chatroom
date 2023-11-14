@@ -14,7 +14,7 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String content;
     @Column
     private ZonedDateTime timeCreated;
@@ -27,8 +27,10 @@ public class Message {
     @JoinColumn(name = "chatroom_id")
     private Chatroom chatroom;
 
-    public Message(String content){
+    public Message(String content, Chatroom chatroom, User user){
         this.content = content;
+        this.chatroom = chatroom;
+        this.user = user;
         LocalDateTime localDateTime = LocalDateTime.now();
         ZonedDateTime currentTime = localDateTime.atZone(ZoneId.of("UTC"));
         this.timeCreated = currentTime;
