@@ -23,7 +23,8 @@ public class Chatroom {
     @JoinTable(
             name = "chatroom_users",
             joinColumns = @JoinColumn(name = "chatroom_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
+            inverseJoinColumns = @JoinColumn(name = "user_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"chatroom_id", "user_id"})
     )
 
     @JsonIgnoreProperties({"users"})
