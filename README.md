@@ -12,6 +12,7 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 - [X] Allow a user to post a message in a chatroom
 - [ ] Allow users to read messages sent by other users in a chatroom
 
-### MVP
-TBC
+### Extensions
+- TBC
+
 
