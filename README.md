@@ -36,4 +36,12 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 
 ## 7. API Routes
 
+## 8. Presentation Outline
+- The Idea 🧠
+- The Plan 🗒️
+- Main Features 
+- Proud code
+- Challenges 
+- Resolving Challenges 
+
 
