@@ -35,4 +35,11 @@ public class ChatroomController {
         return new ResponseEntity<>(userService.userSendMessage(id, messageContentDTO), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<List<Message>> getAllMessagesInChatroom(@PathVariable Long id){
+        return new ResponseEntity<>(chatroomService.getChatroomMessages(id), HttpStatus.OK);
+    }
+
+
+
 }

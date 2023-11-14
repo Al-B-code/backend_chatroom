@@ -2,6 +2,7 @@ package com.group_1.backend_chatroom.services;
 
 import com.group_1.backend_chatroom.dtos.ChatroomDTO;
 import com.group_1.backend_chatroom.models.Chatroom;
+import com.group_1.backend_chatroom.models.Message;
 import com.group_1.backend_chatroom.repositories.ChatroomRepository;
 import com.group_1.backend_chatroom.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class ChatroomService {
 
     public void addChatroom(Chatroom chatroom){
         chatroomRepository.save(chatroom);
+    }
+
+    public List<Message> getChatroomMessages(Long id){
+        return chatroomRepository.findAllMessagesById(id);
     }
 
 
