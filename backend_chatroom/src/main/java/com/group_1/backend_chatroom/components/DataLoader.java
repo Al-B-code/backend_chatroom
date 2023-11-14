@@ -37,7 +37,7 @@ public class DataLoader implements ApplicationRunner {
 
 
         Chatroom chatroom = new Chatroom("BNTA Chatroom");
-        chatroomRepository.save(chatroom);
+        chatroomService.addChatroom(chatroom);
 
 
     }
