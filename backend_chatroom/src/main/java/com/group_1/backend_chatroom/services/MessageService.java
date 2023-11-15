@@ -25,4 +25,7 @@ public class MessageService {
     public void addMessage(Message message){
         messageRepository.save(message);
     }
+
+
+
 }
