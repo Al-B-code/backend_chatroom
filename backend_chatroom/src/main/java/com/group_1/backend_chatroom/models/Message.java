@@ -34,8 +34,7 @@ public class Message {
     private Chatroom chatroom;
 
     @OneToMany(mappedBy = "message", cascade = CascadeType.ALL)
-    @JsonBackReference
-//    @JsonIgnoreProperties({"messages"})
+    @JsonIgnoreProperties({"message", "user"})
     private List<MessageReaction> reactions;
 
 
@@ -97,4 +96,23 @@ public class Message {
         this.user = user;
     }
 
+    public Chatroom getChatroom() {
+        return chatroom;
+    }
+
+    public void setChatroom(Chatroom chatroom) {
+        this.chatroom = chatroom;
+    }
+
+    public List<String> getReactions() {
+        ArrayList<String> emojiReactions = new ArrayList<>();
+        for (MessageReaction emoji : this.reactions){
+            emojiReactions.add(emoji.getReaction().getEmoji());
+        }
+        return emojiReactions;
+    }
+
+    public void setReactions(List<MessageReaction> reactions) {
+        this.reactions = reactions;
+    }
 }
