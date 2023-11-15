@@ -9,11 +9,12 @@
 ## Table of Contents
 1. Introduction
 2. Technologies & Frameworks
-3. ERD & Class Diagrams
-4. Chatroom Functionality
-5. MVP
-6. Extensions
-7. API Routes
+3. Installation Instructions
+4. ERD & Class Diagrams
+5. Chatroom Functionality
+6. MVP
+7. Extensions
+8. API Routes
 
 ## 1. Introduction 
 Based on BNTA’s Slack workspace, we wanted to adapt and improve the functionality of the messaging platform for an educational environment.
@@ -29,18 +30,20 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 - Postico
 - GitHub
 
-## 3. ERD & Class Diagrams
+## Installation Instructions
 
-## 4. Chatroom Functionality
+## ERD & Class Diagrams
 
-## 5. MVP 🫡
+## Chatroom Functionality
+
+## MVP 🫡
 - [X] Allow for the creation of a new user
 - [ ] Allow you to update the information of a user
-- [ ] Delete a user
+- [X] Delete a user
 - [X] Allow a user to post a message in a chatroom
 - [ ] Allow users to read messages sent by other users in a chatroom
 
-## 6. Extensions 💪
+## Extensions 💪
 - TBC
 
 ## 7. API Routes
