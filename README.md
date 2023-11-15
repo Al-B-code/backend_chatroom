@@ -22,7 +22,7 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 
 ## 3. ERD & Class Diagrams
 
-## 4. Chatroom Functionality
+## 4. Chatroom Functionality .
 
 ## 5. MVP 🫡
 - [X] Allow for the creation of a new user
