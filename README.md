@@ -7,6 +7,7 @@
 - GitHub: [Ryan](https://github.com/RyanNekadio)
 
 ## Table of Contents
+// to renumber
 1. Introduction
 2. Technologies & Frameworks
 3. Installation Instructions
@@ -16,10 +17,10 @@
 7. Extensions
 8. API Routes
 
-## 1. Introduction 
+## Introduction 
 Based on BNTA’s Slack workspace, we wanted to adapt and improve the functionality of the messaging platform for an educational environment.
 
-## 2. Technologies & Frameworks
+## Technologies & Frameworks
 - Java 17
 - Spring Boot
   - Dev Tools
@@ -31,6 +32,8 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 - GitHub
 
 ## Installation Instructions
+1. Clone the project from the project [repo](https://github.com/Al-B-code/backend_chatroom)
+2. 
 
 ## ERD & Class Diagrams
 
@@ -46,9 +49,9 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 ## Extensions 💪
 - TBC
 
-## 7. API Routes
+## API Routes
 
-## 8. Presentation Outline
+## Presentation Outline
 - The Idea 🧠
 - The Plan 🗒️
 - Main Features 
