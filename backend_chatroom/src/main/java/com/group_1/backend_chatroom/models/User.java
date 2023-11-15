@@ -27,7 +27,7 @@ public class User {
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnoreProperties({"message", "user"})
     private List<MessageReaction> reactions;
 
 

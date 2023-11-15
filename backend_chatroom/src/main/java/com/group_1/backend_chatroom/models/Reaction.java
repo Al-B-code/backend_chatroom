@@ -32,6 +32,7 @@ public enum Reaction {
         }
     }
 
-
-
+    public String getEmoji() {
+        return emoji;
+    }
 }
