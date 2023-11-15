@@ -19,10 +19,19 @@
 Based on BNTA’s Slack workspace, we wanted to adapt and improve the functionality of the messaging platform for an educational environment.
 
 ## 2. Technologies & Frameworks
+- Java 17
+- Spring Boot
+  - Dev Tools
+  - PostgreSQL Driver
+  - Data JPA SQL
+- IntelliJ IDE
+- Postman
+- Postico
+- GitHub
 
 ## 3. ERD & Class Diagrams
 
-## 4. Chatroom Functionality .
+## 4. Chatroom Functionality
 
 ## 5. MVP 🫡
 - [X] Allow for the creation of a new user
