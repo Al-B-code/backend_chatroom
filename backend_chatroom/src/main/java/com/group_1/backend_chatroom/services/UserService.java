@@ -2,6 +2,7 @@ package com.group_1.backend_chatroom.services;
 
 import com.group_1.backend_chatroom.dtos.ChatroomDTO;
 import com.group_1.backend_chatroom.dtos.MessageContentDTO;
+import com.group_1.backend_chatroom.dtos.MessageReactionDTO;
 import com.group_1.backend_chatroom.dtos.UserDTO;
 import com.group_1.backend_chatroom.models.*;
 import com.group_1.backend_chatroom.repositories.ChatroomRepository;
@@ -105,9 +106,12 @@ public class UserService {
 
     }
 
-
-
-
+    public Message addReaction(Long messageId, MessageReactionDTO messageReactionDTO){
+        Message message = messageRepository.findById(messageId).get();
+        Reaction reaction = Reaction.fromString(messageReactionDTO.getReaction());
+        MessageReaction messageReaction = new MessageReaction(message, message.getUser(), reaction);
+        return message;
+    }
 
 
 }

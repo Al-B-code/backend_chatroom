@@ -1,5 +1,8 @@
 package com.group_1.backend_chatroom.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jdk.jfr.Name;
 
@@ -23,6 +26,10 @@ public class User {
     private Role role;
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<MessageReaction> reactions;
+
 
 //    @ManyToMany (mappedBy = "users")
 //    private List<Chatroom> chatrooms;
@@ -36,6 +43,7 @@ public class User {
         this.role = role;
         this.messages = new ArrayList<>();
         this.userChatroomAssociations = new ArrayList<>();
+        this.reactions = new ArrayList<>();
     }
 
     public User() {

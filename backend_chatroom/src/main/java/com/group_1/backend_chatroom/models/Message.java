@@ -1,11 +1,15 @@
 package com.group_1.backend_chatroom.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "messages")
@@ -29,6 +33,12 @@ public class Message {
     @JoinColumn(name = "chatroom_id")
     private Chatroom chatroom;
 
+    @OneToMany(mappedBy = "message", cascade = CascadeType.ALL)
+    @JsonBackReference
+//    @JsonIgnoreProperties({"messages"})
+    private List<MessageReaction> reactions;
+
+
     public Message(String content, Chatroom chatroom, User user){
         this.content = content;
         this.chatroom = chatroom;
@@ -37,6 +47,7 @@ public class Message {
         ZonedDateTime currentTime = localDateTime.atZone(ZoneId.of("UTC"));
         this.timeCreated = currentTime;
         this.userName = user.getUserName();
+        this.reactions = new ArrayList<>();
     }
 
     public Message(){
@@ -72,6 +83,18 @@ public class Message {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public void addReaction(MessageReaction messageReaction){
+        this.reactions.add(messageReaction);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
