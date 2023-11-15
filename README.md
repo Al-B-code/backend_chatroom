@@ -33,7 +33,8 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 
 ## Installation Instructions
 1. Clone the project from the project [repo](https://github.com/Al-B-code/backend_chatroom)
-2. 
+2. Open the project in IntelliJ
+3. Create a database called "chatroom_db"
 
 ## ERD & Class Diagrams
 
@@ -50,6 +51,9 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 - TBC
 
 ## API Routes
+|       Route       | Request Type | Description                          |
+|:------------------------------:|:-------------|:-------------------------------------|
+|           tbc            | GET          | Display all users                    |
 
 ## Presentation Outline
 - The Idea 🧠
