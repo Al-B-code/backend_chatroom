@@ -56,7 +56,7 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 - [x] Allow users to read messages sent by other users in a chatroom
 
 ## 7. Extensions 💪
-- [ ] Allow users to react to a message
+- [X] Allow users to react to a message
 
 ## 8. API Routes
 |       Request  | Path |Description                          |
