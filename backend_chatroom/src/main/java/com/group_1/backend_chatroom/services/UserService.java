@@ -87,6 +87,26 @@ public class UserService {
     }
 
 
+    public User updateUser( Long id, UserDTO userDTO) {
+        User user = userRepository.findById(id).get();
+        if (userDTO.getUserName() != null){
+            user.setUserName(userDTO.getUserName());
+        }
+        if (userDTO.getEmail() != null){
+            user.setEmail(userDTO.getEmail());
+        }
+        if (userDTO.getRole() != 0 ){
+            Role role = Role.fromInteger(userDTO.getRole());
+            user.setRole(role);
+        }
+
+        userRepository.save(user);
+        return user;
+
+    }
+
+
+
 
 
 
