@@ -39,4 +39,9 @@ public class UserController {
     public ResponseEntity<Long>deleteUserById(@PathVariable Long id){
         return new ResponseEntity<>(userService.deleteUser(id), HttpStatus.OK);
     }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody UserDTO userDTO){
+        return new ResponseEntity<>(userService.updateUser(userDTO), HttpStatus.OK);
+    }
 }
