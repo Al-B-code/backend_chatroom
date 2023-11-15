@@ -14,6 +14,8 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
+    private String userName;
     @Column(columnDefinition = "TEXT")
     private String content;
     @Column
@@ -34,6 +36,7 @@ public class Message {
         LocalDateTime localDateTime = LocalDateTime.now();
         ZonedDateTime currentTime = localDateTime.atZone(ZoneId.of("UTC"));
         this.timeCreated = currentTime;
+        this.userName = user.getUserName();
     }
 
     public Message(){
@@ -62,4 +65,13 @@ public class Message {
     public void setTimeCreated(ZonedDateTime timeCreated) {
         this.timeCreated = timeCreated;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
 }
