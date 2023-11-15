@@ -16,6 +16,7 @@
 6. MVP
 7. Extensions
 8. API Routes
+9. Presentation Outline
 
 ## Introduction 
 Based on BNTA’s Slack workspace, we wanted to adapt and improve the functionality of the messaging platform for an educational environment.
@@ -32,11 +33,14 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 - GitHub
 
 ## Installation Instructions
-1. Clone the project from the project [repo](https://github.com/Al-B-code/backend_chatroom)
+1. Clone the project from the [repo](https://github.com/Al-B-code/backend_chatroom)
 2. Open the project in IntelliJ
 3. Create a database called "chatroom_db"
 
 ## ERD & Class Diagrams
+**UML:** ![Alt text](<Class Diagram.png>)
+
+**ERD:** ![Alt text](<Entity Relationship Diagram.png>)
 
 ## Chatroom Functionality
 
@@ -45,22 +49,23 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 - [ ] Allow you to update the information of a user
 - [X] Delete a user
 - [X] Allow a user to post a message in a chatroom
-- [ ] Allow users to read messages sent by other users in a chatroom
+- [x] Allow users to read messages sent by other users in a chatroom
 
 ## Extensions 💪
-- TBC
+- [ ] TBC
 
 ## API Routes
-|       Route       | Request Type | Description                          |
+|       Request  | Path |Description                          |
 |:------------------------------:|:-------------|:-------------------------------------|
-|           tbc            | GET          | Display all users                    |
+|           GET            | /users          | Display all users                    |
+
 
 ## Presentation Outline
+Our presentation on our GitHub repo includes the following:
 - The Idea 🧠
 - The Plan 🗒️
 - Main Features 
 - Proud code
 - Challenges 
 - Resolving Challenges 
-
 
