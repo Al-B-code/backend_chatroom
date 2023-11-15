@@ -25,11 +25,11 @@ public class Message {
     @Column
     private ZonedDateTime timeCreated;
     @ManyToOne
-    @JsonIgnoreProperties({"messages"})
+    @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
-    @JsonIgnoreProperties({"messages"})
+    @JsonIgnore
     @JoinColumn(name = "chatroom_id")
     private Chatroom chatroom;
 

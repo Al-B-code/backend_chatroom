@@ -14,12 +14,12 @@ public class MessageReaction {
 
     @ManyToOne
     @JoinColumn(name = "message_id")
-    @JsonIgnoreProperties({"reactions"})
+    @JsonIgnore
     private Message message;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties({"reactions"})
+    @JsonIgnore
     private User user;
 
     @Enumerated(EnumType.STRING)
