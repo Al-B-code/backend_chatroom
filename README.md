@@ -7,7 +7,7 @@
 - GitHub: [Ryan](https://github.com/RyanNekadio)
 
 ## Table of Contents
-// to renumber
+
 1. Introduction
 2. Technologies & Frameworks
 3. Installation Instructions
@@ -50,13 +50,13 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
 
 ## 6. MVP 🫡
 - [X] Allow for the creation of a new user
-- [ ] Allow you to update the information of a user
+- [X] Allow you to update the information of a user
 - [X] Delete a user
 - [X] Allow a user to post a message in a chatroom
 - [x] Allow users to read messages sent by other users in a chatroom
 
 ## 7. Extensions 💪
-- [ ] TBC
+- [ ] Allow users to react to a message
 
 ## 8. API Routes
 |       Request  | Path |Description                          |
