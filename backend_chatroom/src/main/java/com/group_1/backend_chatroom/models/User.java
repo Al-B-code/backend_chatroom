@@ -21,13 +21,13 @@ public class User {
     private String email;
     @Column
     private Role role;
-    @OneToMany (mappedBy = "user")
+    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages;
 
 //    @ManyToMany (mappedBy = "users")
 //    private List<Chatroom> chatrooms;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserChatroomAssociation> userChatroomAssociations;
 
     public User(String userName, String email, Role role) {
