@@ -51,7 +51,7 @@ public class ChatroomController {
 
     }
 
-    @PatchMapping(value = "/add-user/user/{userId}/chatroom/{chatroomId}")
+    @PatchMapping(value = "/{chatroomId}/add-user/{userId}")
     public ResponseEntity<Chatroom> addUserToChatroom(@PathVariable Long userId, @PathVariable Long chatroomId) {
         return new ResponseEntity<>(userService.addUserToChatroom(userId, chatroomId), HttpStatus.OK);
     }
