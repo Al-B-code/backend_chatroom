@@ -48,8 +48,8 @@ public class UserService {
 
     @Transactional
     public Message userSendMessage( Long chatroomId, MessageContentDTO messageContentDTO){
-        User user = userRepository.getReferenceById(messageContentDTO.getUserId());
-        Chatroom chatroom = chatroomRepository.getReferenceById(chatroomId);
+        User user = userRepository.findById(messageContentDTO.getUserId()).get();
+        Chatroom chatroom = chatroomRepository.findById(chatroomId).get();
         Message message = new Message(messageContentDTO.getContent(), chatroom, user);
         List<UserChatroomAssociation> userChatroomAssocations = userChatroomAssociationRepository.findByUserIdAndChatroomId(user.getId(), chatroom.getId()); // findbyuserIdandChatroomId shouldnt be a list.
 
