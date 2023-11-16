@@ -68,11 +68,12 @@ As we progressed into coding and following guidance of the trainers, we changed 
 - [X] Allow you to update the information of a user
 - [X] Delete a user
 - [X] Allow a user to post a message in a chatroom
-- [x] Allow users to read messages sent by other users in a chatroom
+- [X] Allow users to read messages sent by other users in a chatroom
+- [X] Allows users to get chatroom by id
 
 ## 5.2. Extensions 💪
 - [X] Allow users to react to a message
-- [X] Allows chatrooms to be deleted 
+- [X] Allows chatrooms to be deleted
 
 ## 6. API Routes
 |       Request  | Path |Description                          |
@@ -85,7 +86,8 @@ As we progressed into coding and following guidance of the trainers, we changed 
 |           GET            | /users       | Get all users                 |             
 |           GET            | /chatrooms/{chatroomId}          | Allow users to read messages sent in the chatroom 
 |           GET            | /users/{userId}         | Get user by id                   |   
-|           GET            | /messages/{messageId}         | Get message by id     
+|           GET            | /messages/{messageId}         | Get message by id  
+|           GET            | /chatrooms/{chatrooomId}         | Get chatroom by id                   |     
 |           PATCH            | /chatrooms/{chatroomId}/add-user/{userId}          | Add user to chatroom            |  
 |           PATCH            | /users/{Id}          | Update a specific user by id              |
 |           PATCH            | /messages/{messageId}          | Allow users to react to a message  
