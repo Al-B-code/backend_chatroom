@@ -14,11 +14,11 @@ public class Chatroom {
     @Column
     private String name;
 
-    @OneToMany (mappedBy = "chatroom")
+    @OneToMany (mappedBy = "chatroom", cascade = CascadeType.ALL)
     private List<Message> messages;
 
 
-    @OneToMany(mappedBy = "chatroom")
+    @OneToMany(mappedBy = "chatroom", cascade = CascadeType.ALL)
     private List<UserChatroomAssociation> userChatroomAssociations;
 
 
