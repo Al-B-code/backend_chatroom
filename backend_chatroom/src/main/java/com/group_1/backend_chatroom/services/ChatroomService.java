@@ -46,4 +46,11 @@ public class ChatroomService {
     }
 
 
+    public Long deleteChatroom(Long id){
+        Chatroom chatroom = chatroomRepository.findById(id).get();
+        chatroomRepository.delete(chatroom);
+        return id;
+    }
+
+
 }

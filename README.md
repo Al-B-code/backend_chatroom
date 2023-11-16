@@ -16,7 +16,7 @@
    - 4.2. Final Diagrams
 5. Chatroom Functionality
    - 5.1. MVP 🫡
-   - 5.2. Extension 💪
+   - 5.2. Extensions 💪
 6. API Routes
 
 ## 1. Introduction 
@@ -70,9 +70,13 @@ As we progressed into coding and following guidance of the trainers, we changed 
 - [X] Allow a user to post a message in a chatroom
 - [x] Allow users to read messages sent by other users in a chatroom
 
-## 5.2. Extension 💪
+## 5.2. Extensions 💪
 - [X] Allow users to react to a message
+<<<<<<< HEAD
 - [X] Allows a chatroom to be deleted 
+=======
+- [X] Allows chatrooms to be deleted 
+>>>>>>> refs/remotes/origin/main
 
 ## 6. API Routes
 |       Request  | Path |Description                          |
