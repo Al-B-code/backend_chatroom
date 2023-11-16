@@ -89,3 +89,4 @@ As we progressed into coding and following guidance of the trainers, we changed 
 |           PATCH            | /users/{Id}          | Update a specific user by id              |
 |           PATCH            | /messages/{messageId}          | Allow users to react to a message  
 |           DELETE            | /users/{Id}         | Delete a user by id                    |
+|           DELETE            | /chatroom/{Id}         | Delete a chatroom by id                    |
