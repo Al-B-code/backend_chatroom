@@ -1,12 +1,10 @@
 package com.group_1.backend_chatroom.services;
 
 import com.group_1.backend_chatroom.dtos.MessageContentDTO;
+import com.group_1.backend_chatroom.dtos.MessageReactionDTO;
 import com.group_1.backend_chatroom.dtos.UserDTO;
 import com.group_1.backend_chatroom.models.*;
-import com.group_1.backend_chatroom.repositories.ChatroomRepository;
-import com.group_1.backend_chatroom.repositories.MessageRepository;
-import com.group_1.backend_chatroom.repositories.UserChatroomAssociationRepository;
-import com.group_1.backend_chatroom.repositories.UserRepository;
+import com.group_1.backend_chatroom.repositories.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +25,9 @@ public class UserService {
 
     @Autowired
     UserChatroomAssociationRepository userChatroomAssociationRepository;
+
+    @Autowired
+    MessageReactionRepository messageReactionRepository;
 
     public List<User> users(){
         return userRepository.findAll();
@@ -104,9 +105,14 @@ public class UserService {
 
     }
 
-
-
-
+    public Message addReaction(Long messageId, MessageReactionDTO messageReactionDTO){
+        Message message = messageRepository.findById(messageId).get();
+        Reaction reaction = Reaction.fromString(messageReactionDTO.getReaction());
+        MessageReaction messageReaction = new MessageReaction(message, message.getUser(), reaction);
+        messageReactionRepository.save(messageReaction);
+        messageRepository.save(message);
+        return message;
+    }
 
 
 }
