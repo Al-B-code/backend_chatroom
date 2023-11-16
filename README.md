@@ -78,12 +78,14 @@ As we progressed into coding and following guidance of the trainers, we changed 
 |:------------------------------:|:-------------|:-------------------------------------|
 |           POST            | /users/          | Add a new user                    |
 |           POST            | /chatrooms         | Add a new chatroom
+|           POST            | /chatrooms/{Id}          | User can send a message to a chatroom             |
 |           GET            | /chatrooms         | Get all chatrooms                   |      
 |           GET            | /messages         | Get all messages                   |
 |           GET            | /users       | Get all users                 |             
-|           GET            | /chatrooms/{chatroomid}          | Allow users to read messages sent in the chatroom 
-|           GET            | /users/{userid}         | Get user by id                   |   
-|           GET            | /messages/{messageid}         | Get message by id       
-|           PATCH            | /users/{id}          | Update a specific user by id              |
-|           PATCH            | /messages/{messageid}          | Allow users to react to a message  
-|           DELETE            | /users/{id}         | Delete a user by id                    |
+|           GET            | /chatrooms/{chatroomId}          | Allow users to read messages sent in the chatroom 
+|           GET            | /users/{userId}         | Get user by id                   |   
+|           GET            | /messages/{messageId}         | Get message by id     
+|           PATCH            | /chatrooms/{chatroomId}/add-user/{userId}          | Add user to chatroom            |  
+|           PATCH            | /users/{Id}          | Update a specific user by id              |
+|           PATCH            | /messages/{messageId}          | Allow users to react to a message  
+|           DELETE            | /users/{Id}         | Delete a user by id                    |
