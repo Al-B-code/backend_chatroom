@@ -1,5 +1,6 @@
 package com.group_1.backend_chatroom.controllers;
 
+import com.group_1.backend_chatroom.dtos.ChatroomDTO;
 import com.group_1.backend_chatroom.dtos.UserDTO;
 import com.group_1.backend_chatroom.models.User;
 import com.group_1.backend_chatroom.services.UserService;
@@ -44,4 +45,6 @@ public class UserController {
     public ResponseEntity<User> updateUser(@RequestBody UserDTO userDTO, @PathVariable Long id){
         return new ResponseEntity<>(userService.updateUser(id, userDTO), HttpStatus.OK);
     }
+
+
 }

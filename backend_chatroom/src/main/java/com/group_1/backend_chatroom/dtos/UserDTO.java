@@ -1,6 +1,6 @@
 package com.group_1.backend_chatroom.dtos;
 
-import com.group_1.backend_chatroom.models.Role;
+
 
 public class UserDTO {
 

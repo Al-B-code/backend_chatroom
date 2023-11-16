@@ -34,7 +34,6 @@ public class UserChatroomAssociation {
     public UserChatroomAssociation() {
     }
 
-
     public Long getId() {
         return id;
     }
