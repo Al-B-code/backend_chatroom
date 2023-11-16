@@ -1,5 +1,6 @@
 package com.group_1.backend_chatroom.controllers;
 
+import com.group_1.backend_chatroom.dtos.ChatroomDTO;
 import com.group_1.backend_chatroom.dtos.MessageContentDTO;
 import com.group_1.backend_chatroom.models.Chatroom;
 import com.group_1.backend_chatroom.models.Message;
@@ -37,6 +38,12 @@ public class ChatroomController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<List<Message>> getAllMessagesInChatroom(@PathVariable Long id){
         return new ResponseEntity<>(chatroomService.getChatroomMessages(id), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Chatroom> addNewChatroom(@RequestBody ChatroomDTO chatroomDTO){
+        return new ResponseEntity<>(chatroomService.createNewChatroom(chatroomDTO), HttpStatus.CREATED);
+
     }
 
 }

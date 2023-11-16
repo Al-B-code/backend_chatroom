@@ -25,6 +25,7 @@ public class Chatroom {
     public Chatroom(String name) {
         this.name = name;
         this.messages = new ArrayList<>();
+        this.userChatroomAssociations = new ArrayList<>();
     }
 
     public Chatroom() {
