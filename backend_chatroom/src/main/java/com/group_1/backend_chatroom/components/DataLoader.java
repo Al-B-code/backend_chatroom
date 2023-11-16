@@ -33,23 +33,46 @@ public class DataLoader implements ApplicationRunner {
         User ryan = new User("ryanAir", "Ryan@BNTA.com", Role.ADMIN);
         userService.addUser(ryan);
 
-        User albert = new User("alb", "Alb@BNTA.com", Role.ADMIN);
+        User albert = new User("al-b", "Alb@BNTA.com", Role.ADMIN);
         userService.addUser(albert);
+
+        User arianna = new User("beans", "ari@BNTA.com", Role.ADMIN);
+        userService.addUser(arianna);
+
+        User emily = new User("m&m", "emily@BNTA.com", Role.ADMIN);
+        userService.addUser(emily);
 
 
         Chatroom chatroom = new Chatroom("BNTA Chatroom");
         chatroomService.addChatroom(chatroom);
 
+        Chatroom trainerChatroom = new Chatroom("BNTA Trainer Chatroom");
+        chatroomService.addChatroom(trainerChatroom);
 
-        Chatroom chatroom2= new Chatroom("BNTA Trainer Chatroom");
-        chatroomService.addChatroom(chatroom2);
+        UserChatroomAssociation userChatroomAssociation = new UserChatroomAssociation(ryan, trainerChatroom);
+        userChatroomAssociationRepository.save(userChatroomAssociation);
+
+        UserChatroomAssociation userChatroomAssociation1 = new UserChatroomAssociation(albert, trainerChatroom);
+        userChatroomAssociationRepository.save(userChatroomAssociation1);
+
+        UserChatroomAssociation userChatroomAssociation2 = new UserChatroomAssociation(arianna, trainerChatroom);
+        userChatroomAssociationRepository.save(userChatroomAssociation2);
+
+        UserChatroomAssociation userChatroomAssociation3 = new UserChatroomAssociation(emily, trainerChatroom);
+        userChatroomAssociationRepository.save(userChatroomAssociation3);
+
 
         Message message = new Message("Hello world!", chatroom, ryan);
         messageService.addMessage(message);
-        chatroom.addMessage(message);
 
-        UserChatroomAssociation userChatroomAssociation = new UserChatroomAssociation(ryan, chatroom);
-        userChatroomAssociationRepository.save(userChatroomAssociation);
+        Message message1 = new Message("Hello TrainerChatroom!", trainerChatroom, albert);
+        messageService.addMessage(message1);
+        Message message2 = new Message("Hey!", trainerChatroom, arianna);
+        messageService.addMessage(message2);
+        Message message3 = new Message("Hi!", trainerChatroom, emily);
+        messageService.addMessage(message3);
+
+
 
 
     }
