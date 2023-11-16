@@ -27,6 +27,10 @@ public class ChatroomService {
         return chatroomRepository.getReferenceById(chatroomDTO.getId());
     }
 
+    public Chatroom getChatroomById(Long id){
+        return chatroomRepository.findById(id).get();
+    }
+
     public void addChatroom(Chatroom chatroom){
         chatroomRepository.save(chatroom);
     }

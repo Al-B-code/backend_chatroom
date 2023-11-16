@@ -48,29 +48,41 @@ public class UserService {
 
     @Transactional
     public Message userSendMessage( Long chatroomId, MessageContentDTO messageContentDTO){
-
         User user = userRepository.getReferenceById(messageContentDTO.getUserId());
         Chatroom chatroom = chatroomRepository.getReferenceById(chatroomId);
         Message message = new Message(messageContentDTO.getContent(), chatroom, user);
-        chatroom.addMessage(message);
+        List<UserChatroomAssociation> userChatroomAssocations = userChatroomAssociationRepository.findByUserIdAndChatroomId(user.getId(), chatroom.getId()); // findbyuserIdandChatroomId shouldnt be a list.
 
+
+        if (userChatroomAssocations.isEmpty()) {
+            return message;
+        }
+
+        chatroom.addMessage(message);
         messageRepository.save(message);
         userRepository.save(user);
         chatroomRepository.save(chatroom);
-
-        // add to the userchatroomassociation table
-        UserChatroomAssociation userChatroomAssociation = new UserChatroomAssociation(user, chatroom);
-
-        // checks if the association exits. If it does NOT it will save. If it doesnt it wont save.
-        List<UserChatroomAssociation> chatroomAssociations = userChatroomAssociationRepository.findByUserIdAndChatroomId(messageContentDTO.getUserId(), chatroomId);
-
-        if (chatroomAssociations.isEmpty()){
-            userChatroomAssociationRepository.save(userChatroomAssociation);
-        }
-
         return message;
+    }
+
+    public Chatroom addUserToChatroom(Long userId, Long chatroomId){
+        User user = userRepository.findById(userId).get();
+        Chatroom chatroom = chatroomRepository.findById(chatroomId).get();
+        List<UserChatroomAssociation> UserChatroomAssocations = userChatroomAssociationRepository.findByUserIdAndChatroomId(user.getId(), chatroom.getId()); // findbyuserIdandChatroomId shouldnt be a list.
 
 
+
+        if (UserChatroomAssocations.isEmpty()){
+            // add to the userchatroomassociation table
+            UserChatroomAssociation userChatroomAssociation = new UserChatroomAssociation(user, chatroom);
+            userChatroomAssociationRepository.save(userChatroomAssociation);
+            chatroom.addUserChatroomAssociation(userChatroomAssociation);
+            chatroomRepository.save(chatroom);
+
+            return chatroom;
+
+        }
+        return chatroom;
     }
 
     public User createNewUser(UserDTO userDTO){
