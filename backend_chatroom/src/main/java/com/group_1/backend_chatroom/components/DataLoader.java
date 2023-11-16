@@ -62,7 +62,7 @@ public class DataLoader implements ApplicationRunner {
         userChatroomAssociationRepository.save(userChatroomAssociation3);
 
 
-        Message message = new Message("Hello world!", chatroom, ryan);
+        Message message = new Message("Hello world!", trainerChatroom, ryan);
         messageService.addMessage(message);
 
         Message message1 = new Message("Hello TrainerChatroom!", trainerChatroom, albert);

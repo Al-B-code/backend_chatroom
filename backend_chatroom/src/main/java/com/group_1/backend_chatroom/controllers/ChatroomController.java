@@ -35,9 +35,14 @@ public class ChatroomController {
         return new ResponseEntity<>(userService.userSendMessage(id, messageContentDTO), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}/messages")
     public ResponseEntity<List<Message>> getAllMessagesInChatroom(@PathVariable Long id){
         return new ResponseEntity<>(chatroomService.getChatroomMessages(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Chatroom> getAllChatroomById(@PathVariable Long id){
+        return new ResponseEntity<>(chatroomService.getChatroomById(id), HttpStatus.OK);
     }
 
     @PostMapping
@@ -46,4 +51,8 @@ public class ChatroomController {
 
     }
 
+    @PatchMapping(value = "/{chatroomId}/add-user/{userId}")
+    public ResponseEntity<Chatroom> addUserToChatroom(@PathVariable Long userId, @PathVariable Long chatroomId) {
+        return new ResponseEntity<>(userService.addUserToChatroom(userId, chatroomId), HttpStatus.OK);
+    }
 }
