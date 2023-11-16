@@ -56,9 +56,9 @@ Our initial diagrams to illustrate our planning at the start of this project.
 
 As we progressed into coding and following guidance of the trainers, we changed our approach. Our final diagrams represent the new structure of our classes and entity relationships. 
 
-**UML:**
+**UML:** ![Alt text](ClassDiagram.drawio.png)
 
-**ERD:** 
+**ERD:**
 
 
 ## 5. Chatroom Functionality
