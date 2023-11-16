@@ -1,8 +1,6 @@
 package com.group_1.backend_chatroom.models;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Table(name = "chatrooms")
@@ -19,17 +17,6 @@ public class Chatroom {
     @OneToMany (mappedBy = "chatroom")
     private List<Message> messages;
 
-//    @ManyToMany //User needs to be created
-//    @JoinTable(
-//            name = "chatroom_users",
-//            joinColumns = @JoinColumn(name = "chatroom_id"),
-//            inverseJoinColumns = @JoinColumn(name = "user_id"),
-//            uniqueConstraints = @UniqueConstraint(columnNames = {"chatroom_id", "user_id"})
-//    )
-//
-//    @JsonIgnoreProperties({"users"})
-//    @Column
-//    private List<User> users;
 
     @OneToMany(mappedBy = "chatroom")
     private List<UserChatroomAssociation> userChatroomAssociations;
@@ -38,7 +25,6 @@ public class Chatroom {
     public Chatroom(String name) {
         this.name = name;
         this.messages = new ArrayList<>();
-//        this.users = new ArrayList<>();
     }
 
     public Chatroom() {
@@ -68,14 +54,6 @@ public class Chatroom {
         this.messages = messages;
     }
 
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
-
     public void addMessage(Message message){
         this.messages.add(message);
     }
@@ -83,15 +61,6 @@ public class Chatroom {
     public void removeMessage(Message message){
         this.messages.remove(message);
     }
-
-//    public void addUser(User user){
-//        this.users.add(user);
-//    }
-//
-//    public void removeUser(User user){
-//        this.users.remove(user);
-//    }
-
 
     public void addUserChatroomAssociation(UserChatroomAssociation userChatroomAssociation){
         this.userChatroomAssociations.add(userChatroomAssociation);

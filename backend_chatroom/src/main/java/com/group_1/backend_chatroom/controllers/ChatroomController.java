@@ -1,6 +1,5 @@
 package com.group_1.backend_chatroom.controllers;
 
-import com.group_1.backend_chatroom.dtos.ChatroomDTO;
 import com.group_1.backend_chatroom.dtos.MessageContentDTO;
 import com.group_1.backend_chatroom.models.Chatroom;
 import com.group_1.backend_chatroom.models.Message;

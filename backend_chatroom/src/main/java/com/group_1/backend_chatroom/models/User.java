@@ -24,9 +24,6 @@ public class User {
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages;
 
-//    @ManyToMany (mappedBy = "users")
-//    private List<Chatroom> chatrooms;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserChatroomAssociation> userChatroomAssociations;
 

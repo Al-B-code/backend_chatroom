@@ -1,9 +1,6 @@
 package com.group_1.backend_chatroom.components;
 
-
 import com.group_1.backend_chatroom.models.*;
-import com.group_1.backend_chatroom.repositories.ChatroomRepository;
-import com.group_1.backend_chatroom.repositories.MessageRepository;
 import com.group_1.backend_chatroom.repositories.UserChatroomAssociationRepository;
 import com.group_1.backend_chatroom.services.ChatroomService;
 import com.group_1.backend_chatroom.services.MessageService;
@@ -56,8 +53,5 @@ public class DataLoader implements ApplicationRunner {
 
 
     }
-
-
-
 
 }
