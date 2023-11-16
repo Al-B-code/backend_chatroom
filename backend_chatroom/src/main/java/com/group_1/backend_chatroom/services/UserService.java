@@ -51,18 +51,17 @@ public class UserService {
         User user = userRepository.getReferenceById(messageContentDTO.getUserId());
         Chatroom chatroom = chatroomRepository.getReferenceById(chatroomId);
         Message message = new Message(messageContentDTO.getContent(), chatroom, user);
-        List<UserChatroomAssociation> UserChatroomAssocations = userChatroomAssociationRepository.findByUserIdAndChatroomId(user.getId(), chatroom.getId()); // findbyuserIdandChatroomId shouldnt be a list.
-        UserChatroomAssociation userChatroomAssociation = UserChatroomAssocations.get(0);
+        List<UserChatroomAssociation> userChatroomAssocations = userChatroomAssociationRepository.findByUserIdAndChatroomId(user.getId(), chatroom.getId()); // findbyuserIdandChatroomId shouldnt be a list.
 
-        if (user.getUserChatroomAssociations().contains(userChatroomAssociation)) {
-            chatroom.addMessage(message);
-            messageRepository.save(message);
-            userRepository.save(user);
-            chatroomRepository.save(chatroom);
 
-            // checks if the association exits. If it does NOT it will save. If it does it won't save. // i think i will only update user chatroom assocations when a user is added to chatroom.
-            // the check below will be in the user add chatroom with a return message if the user is already added to the chatroom.
+        if (userChatroomAssocations.isEmpty()) {
+            return message;
         }
+
+        chatroom.addMessage(message);
+        messageRepository.save(message);
+        userRepository.save(user);
+        chatroomRepository.save(chatroom);
         return message;
     }
 
