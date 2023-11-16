@@ -72,11 +72,7 @@ As we progressed into coding and following guidance of the trainers, we changed 
 
 ## 5.2. Extensions 💪
 - [X] Allow users to react to a message
-<<<<<<< HEAD
-- [X] Allows a chatroom to be deleted 
-=======
 - [X] Allows chatrooms to be deleted 
->>>>>>> refs/remotes/origin/main
 
 ## 6. API Routes
 |       Request  | Path |Description                          |
