@@ -1,6 +1,6 @@
-# Group 1: Backend for a Chatroom
+# **Group 1: Backend for a Chatroom**
 
-## 👥🎸 The Developer Team 🎸👥
+## 👥🎸 The Chatter Beans Developer Team 🎸👥
 - GitHub: [Albert](https://github.com/Al-B-code)
 - GitHub: [Arianna](https://github.com/Ariannacoseschi)
 - GitHub: [Emily](https://github.com/remily23)
@@ -28,7 +28,7 @@ Based on BNTA’s Slack workspace, we wanted to adapt and improve the functional
   - Dev Tools
   - PostgreSQL Driver
   - Data JPA SQL
-- IntelliJ IDE
+- IntelliJ IDEA IDE
 - Postman
 - Postico
 - GitHub
@@ -76,8 +76,8 @@ As we progressed into coding and following guidance of the trainers, we changed 
 ## 6. API Routes
 |       Request  | Path |Description                          |
 |:------------------------------:|:-------------|:-------------------------------------|
-|           POST            | /users/          | Create a new user                    |
-|           POST            | /chatrooms         | Create a new chatroom
+|           POST            | /users/          | Add a new user                    |
+|           POST            | /chatrooms         | Add a new chatroom
 |           GET            | /chatrooms         | Get all chatrooms                   |      
 |           GET            | /messages         | Get all messages                   |
 |           GET            | /users       | Get all users                 |             
