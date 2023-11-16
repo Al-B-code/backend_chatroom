@@ -31,7 +31,7 @@ public class MessageController {
         return new ResponseEntity<>(messageService.getMessage(id), HttpStatus.OK);
     }
 
-    @PostMapping("/{messageId}")
+    @PatchMapping("/{messageId}")
     public ResponseEntity<Message> addReactionToMessage(@PathVariable Long messageId, @RequestBody MessageReactionDTO messageReactionDTO){
         return new ResponseEntity<>(userService.addReaction(messageId, messageReactionDTO), HttpStatus.OK);
     }
