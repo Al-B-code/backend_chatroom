@@ -18,7 +18,6 @@
    - 5.1. MVP 🫡
    - 5.2. Extension 💪
 6. API Routes
-7.  Presentation Outline
 
 ## 1. Introduction 
 Based on BNTA’s Slack workspace, we wanted to adapt and improve the functionality of the messaging platform for an educational environment.
@@ -88,17 +87,3 @@ As we progressed into coding and following guidance of the trainers, we changed 
 |           PATCH            | /users/{id}          | Update a specific user by id              |
 |           PATCH            | /messages/{messageid}          | Allow users to react to a message  
 |           DELETE            | /users/{id}         | Delete a user by id                    |
-
-
-## 7. Presentation Outline
-
-Our presentation on our GitHub project repo includes the following:
-
-- Introduction to the Project Idea 🧠
-- The Planning 🗒️
-- Our README.md
-- Demo
-- Proud Code
-- Challenges
-- Possible Future Developments
-- Q&A
