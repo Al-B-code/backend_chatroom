@@ -72,6 +72,7 @@ As we progressed into coding and following guidance of the trainers, we changed 
 
 ## 5.2. Extension 💪
 - [X] Allow users to react to a message
+- [X] Allows a chatroom to be deleted 
 
 ## 6. API Routes
 |       Request  | Path |Description                          |
