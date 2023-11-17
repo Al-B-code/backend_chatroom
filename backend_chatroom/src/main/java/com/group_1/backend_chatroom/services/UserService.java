@@ -111,6 +111,10 @@ public class UserService {
             Role role = Role.fromInteger(userDTO.getRole());
             user.setRole(role);
         }
+        if (userDTO.getSoftDeleted() != null){
+            user.setSoftDeleted(userDTO.getSoftDeleted());
+        }
+        System.out.println(userDTO.getSoftDeleted());
 
         userRepository.save(user);
         return user;

@@ -1,12 +1,16 @@
 package com.group_1.backend_chatroom.dtos;
 
 
+import org.springframework.beans.factory.annotation.Value;
 
 public class UserDTO {
 
     private String userName;
     private String email;
     private int role;
+
+    private Boolean softDeleted = null;
+
 
     public UserDTO() {
     }
@@ -33,5 +37,13 @@ public class UserDTO {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public Boolean getSoftDeleted() {
+        return softDeleted;
+    }
+
+    public void setSoftDeleted(Boolean softDeleted) {
+        this.softDeleted = softDeleted;
     }
 }
