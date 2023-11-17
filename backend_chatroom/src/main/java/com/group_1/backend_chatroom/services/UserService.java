@@ -114,7 +114,6 @@ public class UserService {
         if (userDTO.getSoftDeleted() != null){
             user.setSoftDeleted(userDTO.getSoftDeleted());
         }
-        System.out.println(userDTO.getSoftDeleted());
 
         userRepository.save(user);
         return user;

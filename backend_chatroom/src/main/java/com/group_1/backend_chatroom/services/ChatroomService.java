@@ -54,7 +54,7 @@ public class ChatroomService {
                 message.setUserName("anon");
                 user.setUserName("anon");
                 user.setEmail("anon");
-//                user.setRole(Role.USER);
+                user.setRole(Role.USER);
                 messagesWithSoftDelete.add(message);
             }
             messagesWithSoftDelete.add(message);
