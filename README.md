@@ -56,9 +56,13 @@ Our initial diagrams to illustrate our planning at the start of this project.
 
 As we progressed into coding and following guidance of the trainers, we changed our approach. Our final diagrams represent the new structure of our classes and entity relationships. 
 
-**UML:** ![Alt text](ClassDiagram.drawio.png)
+**UML:**
+
+![Alt text](ClassDiagram.drawio.png)
 
 **ERD:**
+
+
 
 
 ## 5. Chatroom Functionality
@@ -74,6 +78,7 @@ As we progressed into coding and following guidance of the trainers, we changed 
 ## 5.2. Extensions 💪
 - [X] Allow users to react to a message
 - [X] Allows chatrooms to be deleted
+- [X] Allows a user to be soft deleted
 
 ## 6. API Routes
 |       Request  | Path |Description                          |
