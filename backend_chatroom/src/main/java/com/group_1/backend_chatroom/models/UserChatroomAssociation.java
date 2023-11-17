@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user_chatroom_assoication", uniqueConstraints = {
+@Table(name = "user_chatroom_associations", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"chatroom_id", "user_id"})
 })
 public class UserChatroomAssociation {

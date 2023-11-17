@@ -68,11 +68,11 @@ public class UserService {
     public Chatroom addUserToChatroom(Long userId, Long chatroomId){
         User user = userRepository.findById(userId).get();
         Chatroom chatroom = chatroomRepository.findById(chatroomId).get();
-        List<UserChatroomAssociation> UserChatroomAssocations = userChatroomAssociationRepository.findByUserIdAndChatroomId(user.getId(), chatroom.getId()); // findbyuserIdandChatroomId shouldnt be a list.
+        List<UserChatroomAssociation> UserChatroomAssociations = userChatroomAssociationRepository.findByUserIdAndChatroomId(user.getId(), chatroom.getId()); // findbyuserIdandChatroomId shouldnt be a list.
 
 
 
-        if (UserChatroomAssocations.isEmpty()){
+        if (UserChatroomAssociations.isEmpty()){
             // add to the userchatroomassociation table
             UserChatroomAssociation userChatroomAssociation = new UserChatroomAssociation(user, chatroom);
             userChatroomAssociationRepository.save(userChatroomAssociation);
