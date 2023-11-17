@@ -24,6 +24,9 @@ public class User {
     private String email;
     @Column
     private Role role;
+    @Column
+    private Boolean softDeleted;
+
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -41,6 +44,7 @@ public class User {
         this.messages = new ArrayList<>();
         this.userChatroomAssociations = new ArrayList<>();
         this.reactions = new ArrayList<>();
+        this.softDeleted = false;
     }
 
     public User() {
@@ -110,5 +114,21 @@ public class User {
 
     public void removeUserChatroomAssociation(UserChatroomAssociation userChatroomAssociation){
         this.userChatroomAssociations.remove(userChatroomAssociation);
+    }
+
+    public Boolean getSoftDeleted() {
+        return softDeleted;
+    }
+
+    public void setSoftDeleted(Boolean softDeleted) {
+        this.softDeleted = softDeleted;
+    }
+
+    public List<MessageReaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(List<MessageReaction> reactions) {
+        this.reactions = reactions;
     }
 }
