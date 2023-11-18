@@ -1,6 +1,9 @@
 package com.group_1.backend_chatroom.components;
 
+import com.group_1.backend_chatroom.dtos.MessageReactionDTO;
 import com.group_1.backend_chatroom.models.*;
+import com.group_1.backend_chatroom.repositories.MessageReactionRepository;
+import com.group_1.backend_chatroom.repositories.MessageRepository;
 import com.group_1.backend_chatroom.repositories.UserChatroomAssociationRepository;
 import com.group_1.backend_chatroom.services.ChatroomService;
 import com.group_1.backend_chatroom.services.MessageService;
@@ -25,6 +28,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     UserChatroomAssociationRepository userChatroomAssociationRepository;
+
+    @Autowired
+    MessageReactionRepository messageReactionRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -71,6 +77,16 @@ public class DataLoader implements ApplicationRunner {
         messageService.addMessage(message2);
         Message message3 = new Message("Hi!", trainerChatroom, emily);
         messageService.addMessage(message3);
+
+
+        MessageReaction messageReaction = new MessageReaction(message, Reaction.JOY);
+        messageReactionRepository.save(messageReaction);
+
+        MessageReaction messageReaction2 = new MessageReaction(message, Reaction.FROWN);
+        messageReactionRepository.save(messageReaction2);
+
+        MessageReaction messageReaction3 = new MessageReaction(message1, Reaction.FROWN);
+        messageReactionRepository.save(messageReaction3);
 
 
 

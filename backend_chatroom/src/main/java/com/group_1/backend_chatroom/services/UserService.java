@@ -123,7 +123,7 @@ public class UserService {
     public Message addReaction(Long messageId, MessageReactionDTO messageReactionDTO){
         Message message = messageRepository.findById(messageId).get();
         Reaction reaction = Reaction.fromString(messageReactionDTO.getReaction());
-        MessageReaction messageReaction = new MessageReaction(message, message.getUser(), reaction);
+        MessageReaction messageReaction = new MessageReaction(message, reaction);
         messageReactionRepository.save(messageReaction);
         messageRepository.save(message);
         return message;

@@ -4,6 +4,10 @@ public class MessageReactionDTO {
 
     private String reaction;
 
+    public MessageReactionDTO(String reaction) {
+        this.reaction = reaction;
+    }
+
     public MessageReactionDTO() {
     }
 

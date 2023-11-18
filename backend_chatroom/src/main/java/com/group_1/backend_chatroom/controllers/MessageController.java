@@ -36,4 +36,14 @@ public class MessageController {
         return new ResponseEntity<>(userService.addReaction(messageId, messageReactionDTO), HttpStatus.OK);
     }
 
+    @GetMapping("/get-messages-by-reaction-id/{reactionId}")
+    public ResponseEntity<List<Message>> getMessageReactionByReactionId(@PathVariable Long reactionId){
+        return  new ResponseEntity<>(messageService.getMessagesByReactionId(reactionId), HttpStatus.OK);
+    }
+
+    @GetMapping("/get-messages-by-reaction-string")
+    public ResponseEntity<List<Message>> getMessageReactionByReactionId(@RequestBody MessageReactionDTO messageReactionDTO){
+        return  new ResponseEntity<>(messageService.getAllMessagesByReaction(messageReactionDTO), HttpStatus.OK);
+    }
+
 }

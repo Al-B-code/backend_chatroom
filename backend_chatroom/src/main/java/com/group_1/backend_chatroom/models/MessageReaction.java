@@ -25,7 +25,7 @@ public class MessageReaction {
     @Enumerated(EnumType.STRING)
     private Reaction reaction;
 
-    public MessageReaction(Message message, User user, Reaction reaction) {
+    public MessageReaction(Message message, Reaction reaction) {
         this.message = message;
         this.user = message.getUser();
         this.reaction = reaction;

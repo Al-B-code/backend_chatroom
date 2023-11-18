@@ -60,4 +60,5 @@ public class ChatroomController {
     public ResponseEntity<Long> removeChatroom(@PathVariable Long id){
         return new ResponseEntity<>(chatroomService.deleteChatroom(id), HttpStatus.OK);
     }
+
 }
