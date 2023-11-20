@@ -13,5 +13,5 @@ public interface UserChatroomAssociationRepository extends JpaRepository<UserCha
 
     List<UserChatroomAssociation> findByUserIdAndChatroomId(@Param("userId") Long userId, @Param("chatroomId") Long chatroomId);
 
-    List<UserChatroomAssociation> findAllByChatroomId(@Param("userId") Long userId);
+    List<Long> findUserIdsByChatroomId(@Param("userId") Long userId);
 }

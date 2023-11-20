@@ -71,9 +71,9 @@ public class ChatroomService {
         return id;
     }
 
-    public List<UserChatroomAssociation> findAllUsersByChatroom(Long chatroomId){
-        List<UserChatroomAssociation> userChatroomAssociations = userChatroomAssociationRepository.findAllByChatroomId(chatroomId);
-        return userChatroomAssociations;
+    public List<Long> findAllUsersByChatroom(Long chatroomId){
+        List<Long> userIds = userChatroomAssociationRepository.findUserIdsByChatroomId(chatroomId);
+        return userIds;
     }
 
 

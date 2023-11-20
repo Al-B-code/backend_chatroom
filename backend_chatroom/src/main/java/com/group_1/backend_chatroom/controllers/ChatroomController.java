@@ -63,7 +63,7 @@ public class ChatroomController {
     }
 
     @GetMapping(value = "/user-chatroom-associations/{id}")
-    public ResponseEntity<List<UserChatroomAssociation>> findAllChatroomNames(@PathVariable Long id){
+    public ResponseEntity<List<Long>> findAllChatroomNames(@PathVariable Long id){
         return new ResponseEntity<>(chatroomService.findAllUsersByChatroom(id), HttpStatus.OK);
     }
 
