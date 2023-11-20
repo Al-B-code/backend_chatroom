@@ -4,6 +4,7 @@ import com.group_1.backend_chatroom.dtos.ChatroomDTO;
 import com.group_1.backend_chatroom.dtos.MessageContentDTO;
 import com.group_1.backend_chatroom.models.Chatroom;
 import com.group_1.backend_chatroom.models.Message;
+import com.group_1.backend_chatroom.models.UserChatroomAssociation;
 import com.group_1.backend_chatroom.services.ChatroomService;
 import com.group_1.backend_chatroom.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,11 @@ public class ChatroomController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> removeChatroom(@PathVariable Long id){
         return new ResponseEntity<>(chatroomService.deleteChatroom(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/user-chatroom-associations/{id}")
+    public ResponseEntity<List<UserChatroomAssociation>> findAllChatroomNames(@PathVariable Long id){
+        return new ResponseEntity<>(chatroomService.findAllUsersByChatroom(id), HttpStatus.OK);
     }
 
 }

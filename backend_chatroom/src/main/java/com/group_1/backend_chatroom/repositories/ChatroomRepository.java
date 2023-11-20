@@ -10,9 +10,6 @@ import java.util.List;
 @Repository
 public interface ChatroomRepository extends JpaRepository<Chatroom, Long> {
 
-    List<Message> findAllMessagesById(Long chatroomId); // This old/ does not work. Should be removed.
-
-
 
 
 

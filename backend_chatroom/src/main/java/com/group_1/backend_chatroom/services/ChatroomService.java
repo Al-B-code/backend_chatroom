@@ -1,12 +1,10 @@
 package com.group_1.backend_chatroom.services;
 
 import com.group_1.backend_chatroom.dtos.ChatroomDTO;
-import com.group_1.backend_chatroom.models.Chatroom;
-import com.group_1.backend_chatroom.models.Message;
-import com.group_1.backend_chatroom.models.Role;
-import com.group_1.backend_chatroom.models.User;
+import com.group_1.backend_chatroom.models.*;
 import com.group_1.backend_chatroom.repositories.ChatroomRepository;
 import com.group_1.backend_chatroom.repositories.MessageRepository;
+import com.group_1.backend_chatroom.repositories.UserChatroomAssociationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +19,9 @@ public class ChatroomService {
 
     @Autowired
     MessageRepository messageRepository;
+
+    @Autowired
+    UserChatroomAssociationRepository userChatroomAssociationRepository;
 
     public List<Chatroom> getChatrooms() {
         return chatroomRepository.findAll();
@@ -69,6 +70,12 @@ public class ChatroomService {
         chatroomRepository.delete(chatroom);
         return id;
     }
+
+    public List<UserChatroomAssociation> findAllUsersByChatroom(Long chatroomId){
+        List<UserChatroomAssociation> userChatroomAssociations = userChatroomAssociationRepository.findAllByChatroomId(chatroomId);
+        return userChatroomAssociations;
+    }
+
 
 
 }
