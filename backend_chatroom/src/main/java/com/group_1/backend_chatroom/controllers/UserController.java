@@ -2,6 +2,7 @@ package com.group_1.backend_chatroom.controllers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.group_1.backend_chatroom.dtos.ChatroomDTO;
+import com.group_1.backend_chatroom.dtos.ReplyDTO;
 import com.group_1.backend_chatroom.dtos.UserDTO;
 import com.group_1.backend_chatroom.models.User;
 import com.group_1.backend_chatroom.services.UserService;
@@ -46,8 +47,8 @@ public class UserController {
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<User> updateUser(@RequestBody UserDTO userDTO, @PathVariable Long id){
-        return new ResponseEntity<>(userService.updateUser(id, userDTO), HttpStatus.OK);
+    public ResponseEntity<ReplyDTO> updateUser(@RequestBody UserDTO userDTO, @PathVariable Long id){
+        return userService.updateUser(id, userDTO);
     }
 
 

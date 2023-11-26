@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -102,24 +103,45 @@ public class UserService {
     }
 
 
-    public User updateUser( Long id, UserDTO userDTO) {
+    public ResponseEntity<ReplyDTO> updateUser( Long id, UserDTO userDTO) {
         User user = userRepository.findById(id).get();
-        if (userDTO.getUserName() != null){
+
+        String userName = "";
+        String email = "";
+        String userRole = "";
+        String softDeleted = "";
+
+        if (userDTO.getUserName() != null && !(Objects.equals(userDTO.getUserName(), user.getUserName()))){
             user.setUserName(userDTO.getUserName());
+            userName = "User name has been set to " + user.getUserName() + ". ";
         }
-        if (userDTO.getEmail() != null){
+        if (userDTO.getEmail() != null && !(Objects.equals(userDTO.getEmail(), user.getEmail()))){
             user.setEmail(userDTO.getEmail());
+            email = "user email has been set to " + user.getEmail() + ". ";
         }
-        if (userDTO.getRole() != 0 ){
-            Role role = Role.fromInteger(userDTO.getRole());
-            user.setRole(role);
+        if (userDTO.getRole() != 0 && userDTO.getRole() != user.getRole().ordinal()){
+            try {
+                Role role = Role.fromInteger(userDTO.getRole());
+                user.setRole(role);
+                userRole = "user role has been set to " + user.getRole() + ". ";
+            } catch (IllegalArgumentException e) {
+                return new ResponseEntity<>(new ReplyDTO("invalid role, user details not saved. Please add a valid role."), HttpStatus.BAD_REQUEST);
+            }
         }
-        if (userDTO.getSoftDeleted() != null){
-            user.setSoftDeleted(userDTO.getSoftDeleted());
+        if (userDTO.getSoftDeleted() != null && userDTO.getSoftDeleted() != user.getSoftDeleted()){
+                user.setSoftDeleted(userDTO.getSoftDeleted());
+                softDeleted = "user's soft deleted status has been set to " + user.getSoftDeleted() + ". ";
         }
 
+
         userRepository.save(user);
-        return user;
+        ReplyDTO reply = new ReplyDTO(userName + email + userRole + softDeleted);
+        if (reply.getReply().isEmpty()){
+            reply.setReply("No user details have changed.");
+            return new ResponseEntity<>(reply, HttpStatus.OK );
+        }
+        reply.setReply(userName + email + userRole + softDeleted);
+        return new ResponseEntity<>(reply, HttpStatus.OK);
 
     }
 

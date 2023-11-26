@@ -4,7 +4,6 @@ public class ReplyDTO {
 
     private String reply;
 
-    private boolean error;
 
 
     public ReplyDTO(String reply) {

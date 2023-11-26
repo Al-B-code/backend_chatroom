@@ -8,7 +8,6 @@ public class UserDTO {
     private String userName;
     private String email;
     private int role;
-
     private Boolean softDeleted = null;
 
 
