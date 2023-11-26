@@ -1,6 +1,7 @@
 package com.group_1.backend_chatroom.controllers;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.group_1.backend_chatroom.dtos.MessageContentDTO;
 import com.group_1.backend_chatroom.dtos.MessageReactionDTO;
 import com.group_1.backend_chatroom.dtos.ReplyDTO;
 import com.group_1.backend_chatroom.models.Message;
@@ -38,6 +39,11 @@ public class MessageController {
     @PatchMapping("/{messageId}")
     public ResponseEntity<ReplyDTO> addReactionToMessage(@PathVariable Long messageId, @RequestBody MessageReactionDTO messageReactionDTO){
         return userService.addReaction(messageId, messageReactionDTO);
+    }
+
+    @PostMapping
+    public ResponseEntity<ReplyDTO> userSendMessage( @RequestBody MessageContentDTO messageContentDTO){
+        return messageService.userSendMessage(messageContentDTO);
     }
 
 }

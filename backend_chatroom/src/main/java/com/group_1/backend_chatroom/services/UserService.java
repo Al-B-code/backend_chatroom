@@ -50,24 +50,6 @@ public class UserService {
         return id;
     }
 
-    @Transactional
-    public ResponseEntity<ReplyDTO> userSendMessage( Long chatroomId, MessageContentDTO messageContentDTO){
-        User user = userRepository.findById(messageContentDTO.getUserId()).get();
-        Chatroom chatroom = chatroomRepository.findById(chatroomId).get();
-        Message message = new Message(messageContentDTO.getContent(), chatroom, user);
-        List<UserChatroomAssociation> userChatroomAssocations = userChatroomAssociationRepository.findByUserIdAndChatroomId(user.getId(), chatroom.getId()); // findbyuserIdandChatroomId shouldnt be a list.
-
-
-        if (userChatroomAssocations.isEmpty()) {
-            return new ResponseEntity<>(new ReplyDTO("User not in chatroom, message not sent"), HttpStatus.BAD_REQUEST);
-        }
-
-        chatroom.addMessage(message);
-        messageRepository.save(message);
-        userRepository.save(user);
-        chatroomRepository.save(chatroom);
-        return new ResponseEntity<>(new ReplyDTO("Message sent successfully"), HttpStatus.OK);
-    }
 
     public Chatroom addUserToChatroom(Long userId, Long chatroomId){
         User user = userRepository.findById(userId).get();

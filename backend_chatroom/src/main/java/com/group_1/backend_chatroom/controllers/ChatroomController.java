@@ -35,10 +35,7 @@ public class ChatroomController {
         return new ResponseEntity<>(chatroomService.getChatrooms(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/{id}")
-    public ResponseEntity<ReplyDTO> userSendMessage(@PathVariable Long id, @RequestBody MessageContentDTO messageContentDTO){
-        return userService.userSendMessage(id, messageContentDTO);
-    }
+
 
     @GetMapping(value = "/{id}/messages")
     @JsonView(View.SummaryForMessage.class)
