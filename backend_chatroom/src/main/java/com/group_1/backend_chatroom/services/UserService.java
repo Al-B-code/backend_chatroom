@@ -2,11 +2,14 @@ package com.group_1.backend_chatroom.services;
 
 import com.group_1.backend_chatroom.dtos.MessageContentDTO;
 import com.group_1.backend_chatroom.dtos.MessageReactionDTO;
+import com.group_1.backend_chatroom.dtos.ReplyDTO;
 import com.group_1.backend_chatroom.dtos.UserDTO;
 import com.group_1.backend_chatroom.models.*;
 import com.group_1.backend_chatroom.repositories.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -120,13 +123,26 @@ public class UserService {
 
     }
 
-    public Message addReaction(Long messageId, MessageReactionDTO messageReactionDTO){
+    public ResponseEntity<ReplyDTO> addReaction(Long messageId, MessageReactionDTO messageReactionDTO){
+
+
         Message message = messageRepository.findById(messageId).get();
-        Reaction reaction = Reaction.fromString(messageReactionDTO.getReaction());
-        MessageReaction messageReaction = new MessageReaction(message, message.getUser(), reaction);
-        messageReactionRepository.save(messageReaction);
-        messageRepository.save(message);
-        return message;
+
+        try {
+            Reaction reaction = Reaction.fromString(messageReactionDTO.getReaction());
+            // The emoji is valid, proceed
+            MessageReaction messageReaction = new MessageReaction(message, message.getUser(), reaction);
+            messageReactionRepository.save(messageReaction);
+            messageRepository.save(message);
+            ReplyDTO reply = new ReplyDTO("Message Sent Successfully");
+            return new ResponseEntity<>(reply, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            // The emoji is invalid, error handling
+            ReplyDTO reply = new ReplyDTO("Message failed to send, emoji does not exist");
+            return new ResponseEntity<>(reply, HttpStatus.BAD_REQUEST);
+        }
+
+
     }
 
 
