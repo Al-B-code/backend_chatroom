@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.group_1.backend_chatroom.dtos.ChatroomDTO;
 import com.group_1.backend_chatroom.dtos.MessageContentDTO;
+import com.group_1.backend_chatroom.dtos.ReplyDTO;
 import com.group_1.backend_chatroom.models.Chatroom;
 import com.group_1.backend_chatroom.models.Message;
 import com.group_1.backend_chatroom.services.ChatroomService;
@@ -35,8 +36,8 @@ public class ChatroomController {
     }
 
     @PostMapping(value = "/{id}")
-    public ResponseEntity<Message> userSendMessage(@PathVariable Long id, @RequestBody MessageContentDTO messageContentDTO){
-        return new ResponseEntity<>(userService.userSendMessage(id, messageContentDTO), HttpStatus.OK);
+    public ResponseEntity<ReplyDTO> userSendMessage(@PathVariable Long id, @RequestBody MessageContentDTO messageContentDTO){
+        return userService.userSendMessage(id, messageContentDTO);
     }
 
     @GetMapping(value = "/{id}/messages")

@@ -51,7 +51,7 @@ public class UserService {
     }
 
     @Transactional
-    public Message userSendMessage( Long chatroomId, MessageContentDTO messageContentDTO){
+    public ResponseEntity<ReplyDTO> userSendMessage( Long chatroomId, MessageContentDTO messageContentDTO){
         User user = userRepository.findById(messageContentDTO.getUserId()).get();
         Chatroom chatroom = chatroomRepository.findById(chatroomId).get();
         Message message = new Message(messageContentDTO.getContent(), chatroom, user);
@@ -59,14 +59,14 @@ public class UserService {
 
 
         if (userChatroomAssocations.isEmpty()) {
-            return message;
+            return new ResponseEntity<>(new ReplyDTO("User not it chatroom, message not sent"), HttpStatus.BAD_REQUEST);
         }
 
         chatroom.addMessage(message);
         messageRepository.save(message);
         userRepository.save(user);
         chatroomRepository.save(chatroom);
-        return message;
+        return new ResponseEntity<>(new ReplyDTO("Message sent successfully"), HttpStatus.OK);
     }
 
     public Chatroom addUserToChatroom(Long userId, Long chatroomId){
