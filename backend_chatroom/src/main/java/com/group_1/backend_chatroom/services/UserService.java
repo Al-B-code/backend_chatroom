@@ -59,7 +59,7 @@ public class UserService {
 
 
         if (userChatroomAssocations.isEmpty()) {
-            return new ResponseEntity<>(new ReplyDTO("User not it chatroom, message not sent"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ReplyDTO("User not in chatroom, message not sent"), HttpStatus.BAD_REQUEST);
         }
 
         chatroom.addMessage(message);
