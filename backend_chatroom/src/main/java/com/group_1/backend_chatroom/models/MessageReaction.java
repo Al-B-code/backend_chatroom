@@ -2,6 +2,8 @@ package com.group_1.backend_chatroom.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.group_1.backend_chatroom.views.View;
 import jakarta.persistence.*;
 
 @Entity
@@ -23,6 +25,7 @@ public class MessageReaction {
     private User user;
 
     @Enumerated(EnumType.STRING)
+    @JsonView({View.SummaryForMessage.class, View.SummaryForUser.class, View.SummaryForChatroom.class})
     private Reaction reaction;
 
     public MessageReaction(Message message, User user, Reaction reaction) {

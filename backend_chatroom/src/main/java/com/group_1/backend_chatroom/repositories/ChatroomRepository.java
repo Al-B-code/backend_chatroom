@@ -12,9 +12,4 @@ public interface ChatroomRepository extends JpaRepository<Chatroom, Long> {
 
     List<Message> findAllMessagesById(Long chatroomId);
 
-
-
-
-
-
 }

@@ -1,6 +1,8 @@
 package com.group_1.backend_chatroom.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.group_1.backend_chatroom.views.View;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class UserChatroomAssociation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView({View.SummaryForUser.class, View.SummaryForChatroom.class})
     private Long id;
 
 
@@ -23,6 +26,7 @@ public class UserChatroomAssociation {
     @ManyToOne
     @JoinColumn(name = "chatroom_id")
     @JsonIgnoreProperties({"userChatroomAssociations"})
+    @JsonView(View.SummaryForUser.class)
     private Chatroom chatroom;
 
 

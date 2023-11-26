@@ -3,6 +3,8 @@ package com.group_1.backend_chatroom.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.group_1.backend_chatroom.views.View;
 import jakarta.persistence.*;
 import jdk.jfr.Name;
 
@@ -15,26 +17,36 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private Long id;
 
     @Column
     @Name(value = "user_name")
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private String userName;
     @Column
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private String email;
     @Column
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private Role role;
     @Column
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private Boolean softDeleted;
 
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"user"})
+    @JsonView(View.SummaryForUser.class)
     private List<Message> messages;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"message", "user"})
+//    @JsonView(View.SummaryForChatroom.class)
     private List<MessageReaction> reactions;
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonView(View.SummaryForUser.class)
+    @JsonIgnoreProperties({"user", "message", "chatroom"})
     private List<UserChatroomAssociation> userChatroomAssociations;
 
     public User(String userName, String email, Role role) {
@@ -124,10 +136,13 @@ public class User {
         this.softDeleted = softDeleted;
     }
 
-    public List<MessageReaction> getReactions() {
-        return reactions;
+    public List<String> getReactions() {
+        ArrayList<String> emojiReactions = new ArrayList<>();
+        for (MessageReaction emoji : this.reactions){
+            emojiReactions.add(emoji.getReaction().getEmoji());
+        }
+        return emojiReactions;
     }
-
     public void setReactions(List<MessageReaction> reactions) {
         this.reactions = reactions;
     }

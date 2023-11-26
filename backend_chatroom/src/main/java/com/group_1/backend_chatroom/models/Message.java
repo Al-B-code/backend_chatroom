@@ -3,6 +3,9 @@ package com.group_1.backend_chatroom.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.ser.VirtualBeanPropertyWriter;
+import com.group_1.backend_chatroom.views.View;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -17,24 +20,32 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private Long id;
     @Column
+    @JsonView(View.SummaryForMessage.class)
     private String userName;
     @Column(columnDefinition = "TEXT")
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
+
     private String content;
     @Column
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private ZonedDateTime timeCreated;
     @ManyToOne
     @JsonIgnoreProperties({"messages", "userChatroomAssociations"})
     @JoinColumn(name = "user_id")
+    @JsonView({View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private User user;
     @ManyToOne
     @JsonIgnoreProperties({"messages", "userChatroomAssociations"})
     @JoinColumn(name = "chatroom_id")
+    @JsonView({View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private Chatroom chatroom;
 
     @OneToMany(mappedBy = "message", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"message", "user"})
+    @JsonView({View.SummaryForMessage.class, View.SummaryForUser.class, View.SummaryForChatroom.class})
     private List<MessageReaction> reactions;
 
 

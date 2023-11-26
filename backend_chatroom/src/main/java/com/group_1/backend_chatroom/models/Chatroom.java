@@ -1,6 +1,10 @@
 package com.group_1.backend_chatroom.models;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.group_1.backend_chatroom.views.View;
 import jakarta.persistence.*;
 
 @Table(name = "chatrooms")
@@ -9,16 +13,21 @@ public class Chatroom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private Long id;
 
     @Column
+    @JsonView({View.SummaryForUser.class, View.SummaryForMessage.class, View.SummaryForChatroom.class})
     private String name;
 
     @OneToMany (mappedBy = "chatroom", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("chatroom")
+    @JsonView(View.SummaryForChatroom.class)
     private List<Message> messages;
 
 
     @OneToMany(mappedBy = "chatroom", cascade = CascadeType.ALL)
+    @JsonView(View.SummaryForChatroom.class)
     private List<UserChatroomAssociation> userChatroomAssociations;
 
 
